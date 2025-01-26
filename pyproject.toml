@@ -1,0 +1,14 @@
+[project]
+name = "learn-from-agg-obs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "shinepukur", email = "bastien.lenglois7@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
