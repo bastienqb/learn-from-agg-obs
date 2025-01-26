@@ -1,0 +1,39 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+    args: [--unsafe]
+  - id: check-json
+  - id: debug-statements
+  - id: name-tests-test
+    args: [--pytest-test-first]
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.4.0
+  hooks:
+    - id: codespell
+      additional_dependencies:
+        - tomli
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.9.3  # same version as of VS Code extension
+  hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]
+    - id: ruff-format
+- repo: https://github.com/ComPWA/taplo-pre-commit
+  rev: v0.9.3
+  hooks:
+    - id: taplo-format
+- repo: https://github.com/commitizen-tools/commitizen
+  rev: v4.1.0
+  hooks:
+    - id: commitizen
+    - id: commitizen-branch
+      stages: [pre-push]
+
+ci:
+  autofix_commit_msg: "style(pre-commit): :art: auto-fixes"
+  autoupdate_schedule: weekly
+  autoupdate_commit_msg: "chore(pre-commit): :wrench: auto-update"
