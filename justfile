@@ -16,9 +16,14 @@ test:
 build *args:
     uv build {{args}}
 
+# Clean the developer environment
+clean:
+    if [ -d .venv ]; then rm -r .venv; fi
+    if [ -d uv.lock ]; then rm -r uv.lock; fi
+
 # Set up the development environment
-setup:
-    [ -d .venv ] || uv venv .venv
+setup: clean
+    uv sync --no-install-project --no-cache -U
+    uv sync
     uv tool install --with pre-commit-uv pre-commit
-    uv pip install -e ".[dev]"
     pre-commit install --install-hooks

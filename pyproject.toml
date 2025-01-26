@@ -8,8 +8,16 @@ requires-python = ">=3.9"
 dependencies = []
 
 [build-system]
-build-backend = 'mesonpy'
-requires = ['meson-python']
+build-backend = "mesonpy"
+requires = ["meson-python>=0.16.0", "Cython>=3.0.10", "tomli"]
+
+[dependency-groups]
+dev = []
+build = ["meson-python>=0.16.0", "meson", "ninja", "tomli", "Cython>=3.0.10"]
+
+[tool.uv]
+no-build-isolation-package = ["learn-from-agg-obs"]
+default-groups = ["dev", "build"]
 
 [tool.ruff]
 line-length = 120
