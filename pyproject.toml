@@ -12,8 +12,14 @@ build-backend = "mesonpy"
 requires = ["meson-python>=0.16.0", "Cython>=3.0.10", "tomli"]
 
 [dependency-groups]
-dev = []
+dev = ["pytest>=7.2"]
 build = ["meson-python>=0.16.0", "meson", "ninja", "tomli", "Cython>=3.0.10"]
+docs = [
+  "furo>=2024.8.6",
+  "myst-parser>=3.0.1",
+  "sphinx>=7.4.7",
+  "sphinx-design>=0.6.1",
+]
 
 [tool.uv]
 no-build-isolation-package = ["learn-from-agg-obs"]
@@ -45,6 +51,7 @@ ignore = ["D107"]
 "**/tests/**" = ["D100", "D101", "D102", "D103"]
 # Ignore import violations in all __init__.py files
 "__init__.py" = ["E402", "F401"]
+"conf.py" = ["D100", "E501"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
