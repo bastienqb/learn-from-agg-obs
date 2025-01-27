@@ -3,6 +3,11 @@
 
 version: 2
 
+python:
+  install:
+    - method: pip
+      path: .
+
 build:
   os: ubuntu-22.04
   tools:
@@ -10,7 +15,7 @@ build:
   jobs:
     post_install:
       - pip install uv
-      - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --all-extras --group docs --link-mode=copy
+      - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --no-install-project --all-extras --group docs --link-mode=copy
 
 sphinx:
   configuration: docs/conf.py
