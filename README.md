@@ -1,5 +1,7 @@
 # Learning from aggregate observations
 
+<!-- start elevator-pitch -->
+
 This package solves a common challenge in machine learning: making individual-level predictions when only aggregate target data is available.
 For example, retailers would like to predict individual household income in neighborhoods around their store, but only average income figures are published to protect privacy.
 
@@ -10,6 +12,8 @@ This approach is designed for scenarios where:
 - you need to make predictions at the individual level.
 - you have access to individual-level features.
 - target values are only available as aggregates (e.g., means, sums), e.g. due to privacy constraints.
+
+<!-- end elevator-pitch -->
 
 ## Installation
 

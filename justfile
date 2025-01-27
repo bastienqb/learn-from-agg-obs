@@ -16,13 +16,17 @@ test:
 build *args:
     uv build {{args}}
 
-# Clean the developer environment
-clean:
+# Clean the package build
+clean_build:
     if [ -d .venv ]; then rm -r .venv; fi
     if [ -d uv.lock ]; then rm -r uv.lock; fi
 
+# Build the docs using sphinx
+docs:
+    uv run sphinx-build -b html docs docs/_build
+
 # Set up the development environment
-setup: clean
+setup: clean_build
     uv sync --no-install-project --no-cache -U
     uv sync
     uv tool install --with pre-commit-uv pre-commit
